@@ -38,6 +38,8 @@ This is an app to find the best places in the world to drink coffee and buy coff
 | `/user-profile/edit`          | EditProfilePage       | user only `<PrivateRoute>` | Edit user profile form.                            |
 | `/coffeebeans/add`            | CreateCoffeeBeansPage | user only `<PrivateRoute>` | Create new coffeebeans place.                      |
 | `/coffeeshop/add`             | CreateCoffeeShopPage  | user only `<PrivateRoute>` | Create new coffeeshop place.                       |
+| `/coffeebeans/edit`           | EditCoffeeBeansPage   | user only `<PrivateRoute>` | Edit coffeebens file.                              |
+| `/coffeeshop/edit`            | EditCoffeeShopPage    | user only `<PrivateRoute>` | Edit coffeeshop file.                              |
 | `/coffeelist`                 | CoffeeListPage        | user only `<PrivateRoute>` | Coffee list.                                       |
 | `/coffeebeans/:coffeebeansId` | CoffeeBeansDetailPage | user only `<PrivateRoute>` | CoffeeBeans details.                               |
 | `/coffeeshop/:coffeeshopId`   | CoffeeBeansDetailPage | user only `<PrivateRoute>` | CoffeeShop details.                                |
@@ -55,6 +57,9 @@ Pages:
 - ProfilePage
 
 - EditProfilePage
+- EditCoffeeBeansPage
+
+- EditCoffeeShopPage
 
 - CreateCoffeeBeansPage
 
@@ -71,38 +76,6 @@ Components:
 - Navbar
 - CoffeeBeans
 - CoffeeShop
-
-## Services
-
-- **Auth Service**
-
-  - `authService` :
-    - `.login(user)`
-    - `.signup(user)`
-    - `.logout()`
-    - `.validate()`
-
-- **User Service**
-
-  - `userService` :
-    - `.updateCurrentUser(id, userData)`
-    - `.getCurrentUser()`
-
-- **CoffeeBeans Service**
-
-  - `CoffeeBeansService` :
-    - `.addCoffeeBeans(CoffeeBeansData)`
-    - `.getCoffeeBeanss()`
-    - `.getOneCoffeeBeans(id)`
-    - `.deleteCoffeeBeans(id)`
-
-- **CoffeeShop Service**
-
-  - `CoffeeShopService` :
-    - `.addCoffeeShop(CoffeeShopData)`
-    - `.getCoffeeShops()`
-    - `.getOneCoffeeShop(id)`
-    - `.deleteCoffeeShop(id)`
 
 <br>
 
@@ -141,6 +114,12 @@ Components:
     type: String,
     required: true,
   }
+  {
+    createdCoffes: [{ type: Schema.Types.ObjectId, ref: 'CoffeeBeans' }],
+  }
+  {
+    createdShops: [{ type: Schema.Types.ObjectId, ref: 'CoffeeShop' }],
+  }
 }
 ```
 
@@ -149,17 +128,17 @@ Components:
 ```javascript
  {
     store: {
-      type: [String]
+    type: [String]
     }
    origem: {
     type: [String]
    }
    description: {
-    String,
+    type: String,
     required: true,
    }
    image: {
-    String,
+    type: String,
    }
    location: {
     type: String,
@@ -176,11 +155,11 @@ Components:
     type: String,
    }
    description: {
-    String,
+    type: String,
     required: true,
    }
    image: {
-    String,
+    type: String,
    }
    location: {
     type: String,
@@ -193,13 +172,22 @@ Components:
 
 ## API Endpoints (backend routes)
 
-| HTTP Method | URL              | Request Body                                     | Success status | Error Status | Description                                                                                                                     |
-| ----------- | ---------------- | ------------------------------------------------ | -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| GET         | `/auth/profile ` | Saved session                                    | 200            | 404          | Check if user is logged in and return profile page                                                                              |
-| POST        | `/auth/signup`   | {firstname, lastname, username, email, password} | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
-| POST        | `/auth/login`    | {email, password}                                | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session              |
-| POST        | `/auth/logout`   |                                                  | 204            | 400          | Logs out the user                                                                                                               |
-| GET         | `/api/random`    |                                                  |                | 400          | Show random image coffee                                                                                                        |
+| HTTP Method | URL                   | Request Body                                     | Success status | Error Status | Description                                                                                                                     |
+| ----------- | --------------------- | ------------------------------------------------ | -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| GET         | `/auth/profile `      | Saved session                                    | 200            | 404          | Check if user is logged in and return profile page                                                                              |
+| POST        | `/auth/signup`        | {firstname, lastname, username, email, password} | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
+| POST        | `/auth/login`         | {email, password}                                | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session              |
+| POST        | `/createcoffeebens`   | {store, origem, description, image, location}    | 201            | 404          | Checks if the mandatory fields not empty (422), then create coffeebeans file and store.                                         |
+| POST        | `/coffeebeans/edit`   | {store, origem, description, image, location}    | 200            | 401          | Checks if the mandatory fields not empty (422), then edit coffeebeans file and store.                                           |
+| POST        | `/createcoffeeshop`   | {store, description, image, location}            | 201            | 404          | Checks if the mandatory fields not empty (422), then create coffeeshop file and store.                                          |
+| POST        | `/coffeeshop/edit`    | {store, description, image, location}            | 200            | 401          | Checks if the mandatory fields not empty (422), then edit coffeeshop file and store.                                            |
+| GET         | `/coffeelist `        | Get all coffee files                             | 200            | 404          | Render all coffee files created for all users.                                                                                  |
+| GET         | `/mycoffeelist `      | Get all coffee files                             | 200            | 404          | Render all coffee files created for the currently users.                                                                        |
+| GET         | `/coffeebeansdetals ` | Get one coffebeans file                          | 200            | 404          | Render one coffeebeans file.                                                                                                    |
+| GET         | `/coffeeshopdetails ` | Get one coffeeshop file                          | 200            | 404          | Render coffeeshop one file.                                                                                                     |
+| POST        | `/deletecoffeebeans`  |                                                  | 204            | 400          | delete the coffeebeans file.                                                                                                    |
+| POST        | `/deletecoffeeshop`   |                                                  | 204            | 400          | delete the coffeeshop file.                                                                                                     |
+| GET         | `/api/random`         | Render random image.                             |                | 400          | Show random image coffee.                                                                                                       |
 
 <br>
 
@@ -240,7 +228,7 @@ DaisyUI
 
 ### Slides
 
-[Slides Link]
+[Link]()
 
 ### Contributors
 
