@@ -2,10 +2,6 @@
 
 <br>
 
-# Quick Compo
-
-<br>
-
 ## Description
 
 This is an app to find the best places in the world to drink coffee and buy coffee beans from different origins and countries around the world.
@@ -228,7 +224,11 @@ TailwindCSS
 DaisyUI
 <br>
 
-## Links
+# Links
+
+### Figma
+
+[Figma Link](https://www.figma.com/file/mpX6H3f7b4xrqMv9MrSc3p/CoffeeBeans?node-id=0%3A1)
 
 ### Git
 
