@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import AddShop from "../../components/AddCoffee/AddShop";
 
 //const API_URL = "http://localhost:5005";
 
@@ -31,9 +32,12 @@ function ShopListPage() {
 
 	return (
 		<div className="ProjectListPage">
+			<AddShop getShopList={getShopList} />
+
 			{shopList.map((list) => {
 				return (
 					<div className="ProjectCard card" key={list._id}>
+						<img src={list.imageUrl} alt="..." />
 						<h3>{list.store}</h3>
 						<h5>{list.description}</h5>
 						<h5>{list.location}</h5>

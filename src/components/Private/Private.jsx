@@ -4,12 +4,12 @@ import { Navigate } from "react-router-dom";
 
 function Private({ children }) {
 	const { loggedIn, loading } = useContext(AuthContext);
+	//console.log(loggedIn);
 
 	if (loading) return <p>Loading....</p>;
 
-	if (!loggedIn) <Navigate to='/login' />
-  else return children
-
+	if (!loggedIn) <Navigate to="/login" />;
+	else return children;
 }
 
 export default Private;

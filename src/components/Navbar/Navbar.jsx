@@ -11,7 +11,7 @@ function Navbar() {
 				<button>Home</button>
 			</Link>
 
-			{!loggedIn && (
+			{loggedIn && (
 				<>
 					<Link to="/beanslist">
 						<button>BeansList</button>
@@ -19,17 +19,26 @@ function Navbar() {
 					<Link to="/shoplist">
 						<button>ShopList</button>
 					</Link>
-					<button onClick={logout}>Logout</button>
 				</>
 			)}
 
-			<Link to="/signup">
-				<button>Signup</button>
-			</Link>
+			{!loggedIn && (
+				<>
+					<Link to="/signup">
+						<button>Signup</button>
+					</Link>
 
-			<Link to="/login">
-				<button>Login</button>
-			</Link>
+					<Link to="/login">
+						<button>Login</button>
+					</Link>
+				</>
+			)}
+
+			{loggedIn && (
+				<>
+					<button onClick={logout}>Logout</button>
+				</>
+			)}
 		</div>
 	);
 }

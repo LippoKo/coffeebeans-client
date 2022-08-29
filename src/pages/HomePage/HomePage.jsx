@@ -2,7 +2,7 @@ import BeansListPage from "../BeansListPage/BeansListPage";
 import ShopListPage from "../ShopListPage/ShopListPage";
 
 function HomePage() {
-	return <div><h1>Home Page</h1>
+	return <div><h2>Home Page</h2>
 	<BeansListPage />
 	<ShopListPage />
 

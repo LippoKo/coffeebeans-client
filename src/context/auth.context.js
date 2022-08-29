@@ -1,10 +1,13 @@
 import { useState, useEffect, createContext } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // create the context
 const AuthContext = createContext();
 
 function AuthProviderWrapper(props) {
+	const navigate = useNavigate();
+
 	const [loading, setLoading] = useState(true);
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [user, setUser] = useState(null);
@@ -18,7 +21,7 @@ function AuthProviderWrapper(props) {
 
 		if (storedToken) {
 			axios
-				.get(`${process.env.REACT_APP_API_URL}/api/auth/verify`, {
+				.get(`${process.env.REACT_APP_API_URL}/auth/verify`, {
 					headers: {
 						Authorization: `Bearer ${storedToken}`,
 					},
@@ -43,6 +46,7 @@ function AuthProviderWrapper(props) {
 	const logout = () => {
 		localStorage.removeItem("authToken");
 		authenticateUser();
+		navigate("/login");
 	};
 
 	useEffect(() => {

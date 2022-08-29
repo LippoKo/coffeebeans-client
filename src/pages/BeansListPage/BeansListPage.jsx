@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import AddBeans from "../../components/AddCoffee/AddBeans";
 
 //const API_URL = "http://localhost:5005";
 
@@ -31,12 +33,17 @@ function BeansListPage() {
 
 	return (
 		<div className="ProjectListPage">
+			<AddBeans getBeansList={getBeansList} />
+
 			{beansList.map((list) => {
 				return (
 					<div className="ProjectCard card" key={list._id}>
-						<h3>{list.store}</h3>
-						<h5>{list.description}</h5>
-						<h5>{list.location}</h5>
+						<Link to={`/beansdetails/${list._id}`}>
+							<img src={list.imageUrl} alt="..." />
+							<h3>{list.store}</h3>
+							<h5>{list.description}</h5>
+							<h5>{list.location}</h5>
+						</Link>
 					</div>
 				);
 			})}
