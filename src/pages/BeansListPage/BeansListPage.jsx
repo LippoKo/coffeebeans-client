@@ -12,7 +12,7 @@ function BeansListPage() {
 		try {
 			const storedToken = localStorage.getItem("authToken");
 			let response = await axios.get(
-				`${process.env.REACT_APP_API_URL}/api/coffeelist`,
+				`${process.env.REACT_APP_API_URL}/api/beanslist`,
 				{
 					headers: {
 						Authorization: `Bearer ${storedToken}`,
@@ -20,7 +20,7 @@ function BeansListPage() {
 				}
 			);
 
-			setBeansList(response.data.allBeans);
+			setBeansList(response.data.allBeans.reverse());
 			//console.log(response.data);
 		} catch (error) {
 			console.log(error);

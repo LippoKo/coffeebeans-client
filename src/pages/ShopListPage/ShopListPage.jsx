@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import AddShop from "../../components/AddCoffee/AddShop";
+import { Link } from "react-router-dom";
 
 //const API_URL = "http://localhost:5005";
 
@@ -11,7 +12,7 @@ function ShopListPage() {
 		try {
 			const storedToken = localStorage.getItem("authToken");
 			let response = await axios.get(
-				`${process.env.REACT_APP_API_URL}/api/coffeelist`,
+				`${process.env.REACT_APP_API_URL}/api/shoplist`,
 				{
 					headers: {
 						Authorization: `Bearer ${storedToken}`,
@@ -19,7 +20,7 @@ function ShopListPage() {
 				}
 			);
 
-			setShopList(response.data.allShops);
+			setShopList(response.data.allShops.reverse());
 			//console.log(response.data);
 		} catch (error) {
 			console.log(error);
@@ -37,10 +38,12 @@ function ShopListPage() {
 			{shopList.map((list) => {
 				return (
 					<div className="ProjectCard card" key={list._id}>
-						<img src={list.imageUrl} alt="..." />
-						<h3>{list.store}</h3>
-						<h5>{list.description}</h5>
-						<h5>{list.location}</h5>
+						<Link to={`/shopdetails/${list._id}`}>
+							<img src={list.imageUrl} alt="..." />
+							<h3>{list.store}</h3>
+							<h5>{list.description}</h5>
+							<h5>{list.location}</h5>
+						</Link>
 					</div>
 				);
 			})}

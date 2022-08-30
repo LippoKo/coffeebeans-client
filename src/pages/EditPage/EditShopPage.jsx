@@ -1,8 +1,9 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/auth.context";
+import { useParams, useNavigate } from "react-router-dom";
 
-function AddShop({ getShopList }) {
+function EditShop() {
 	const [store, setStore] = useState("");
 	const [description, setDescription] = useState("");
 	const [location, setLocation] = useState("");
@@ -10,6 +11,8 @@ function AddShop({ getShopList }) {
 	const [loading, setLoading] = useState(false);
 
 	const { user } = useContext(AuthContext);
+	const { shopId } = useParams();
+	const navigate = useNavigate();
 
 	const handleStore = (e) => setStore(e.target.value);
 	const handleDescription = (e) => setDescription(e.target.value);
@@ -20,7 +23,7 @@ function AddShop({ getShopList }) {
 		// console.log("The file to be uploaded is: ", e.target.files[0]);
 
 		const uploadData = new FormData();
-
+		//console.log(user);
 		// imageUrl => this name has to be the same as in the model since we pass
 		// req.body to .create() method when creating a new movie in '/api/movies' POST route
 		uploadData.append("imageUrl", e.target.files[0]);
@@ -40,36 +43,90 @@ function AddShop({ getShopList }) {
 			});
 	};
 
+	const getShopList = async () => {
+		try {
+			const storedToken = localStorage.getItem("authToken");
+			let response = await axios.get(
+				`${process.env.REACT_APP_API_URL}/api/shopdetails/${shopId}`,
+				{
+					headers: {
+						Authorization: `Bearer ${storedToken}`,
+					},
+				}
+			);
+
+			setStore(response.data.store);
+			setDescription(response.data.description);
+			setLocation(response.data.location);
+			setImageUrl(response.data.imageUrl);
+			console.log(response.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		getShopList();
+	}, []);
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		console.log(imageUrl);
 		if (loading) {
 			alert("Image still loading...");
 			return;
 		}
 
-		const newShop = { store, description, location, imageUrl, user: user._id };
+		const editShop = {
+			store,
+			origin,
+			description,
+			location,
+			imageUrl,
+			user: user._id,
+		};
 		const storedToken = localStorage.getItem("authToken");
 
 		axios
-			.post(`${process.env.REACT_APP_API_URL}/api/coffeeshop`, newShop, {
-				headers: {
-					Authorization: `Bearer ${storedToken}`,
-				},
-			})
-			.then(() => {
-				getShopList();
-			})
+			.put(
+				`${process.env.REACT_APP_API_URL}/api/shopdetails/${shopId}`,
+				editShop,
+				{
+					headers: {
+						Authorization: `Bearer ${storedToken}`,
+					},
+				}
+			)
+			/* .then(() => {
+				getshopList();
+			}) */
 			.catch((err) => console.log(err));
 
 		setStore("");
 		setDescription("");
 		setLocation("");
 		setImageUrl("");
+		navigate(`/shopdetails/${shopId}`);
+	};
+
+	const deleteShop = () => {
+		const storedToken = localStorage.getItem("authToken");
+
+		axios
+			.delete(`${process.env.REACT_APP_API_URL}/api/shopdetails/${shopId}`, {
+				headers: {
+					Authorization: `Bearer ${storedToken}`,
+				},
+			})
+			.then(() => {
+				navigate("/shoplist");
+			})
+			.catch((err) => console.log(err));
 	};
 
 	return (
 		<div className="SignupPage">
-			<h3>Add Shop</h3>
+			<h3>Edit shop</h3>
 
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="store">
@@ -111,10 +168,11 @@ function AddShop({ getShopList }) {
 					/>
 				</label>
 
-				<button type="submit">Add Shop</button>
+				<button type="submit">Edit shop</button>
 			</form>
+			<button onClick={deleteShop}>Delete Shop</button>
 		</div>
 	);
 }
 
-export default AddShop;
+export default EditShop;

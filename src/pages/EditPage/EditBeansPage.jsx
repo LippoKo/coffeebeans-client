@@ -1,17 +1,22 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/auth.context";
+import { useParams, useNavigate } from "react-router-dom";
 
-function AddShop({ getShopList }) {
+function EditBeans() {
 	const [store, setStore] = useState("");
+	const [origin, setOrigin] = useState("");
 	const [description, setDescription] = useState("");
 	const [location, setLocation] = useState("");
 	const [imageUrl, setImageUrl] = useState("");
 	const [loading, setLoading] = useState(false);
 
-	const { user } = useContext(AuthContext);
+	const { user, authenticateUser } = useContext(AuthContext);
+	const { beansId } = useParams();
+	const navigate = useNavigate();
 
 	const handleStore = (e) => setStore(e.target.value);
+	const handleOrigin = (e) => setOrigin(e.target.value);
 	const handleDescription = (e) => setDescription(e.target.value);
 	const handleLocation = (e) => setLocation(e.target.value);
 
@@ -20,7 +25,7 @@ function AddShop({ getShopList }) {
 		// console.log("The file to be uploaded is: ", e.target.files[0]);
 
 		const uploadData = new FormData();
-
+		//console.log(user);
 		// imageUrl => this name has to be the same as in the model since we pass
 		// req.body to .create() method when creating a new movie in '/api/movies' POST route
 		uploadData.append("imageUrl", e.target.files[0]);
@@ -40,36 +45,91 @@ function AddShop({ getShopList }) {
 			});
 	};
 
+	const getBeansList = async () => {
+		try {
+			const storedToken = localStorage.getItem("authToken");
+			let response = await axios.get(
+				`${process.env.REACT_APP_API_URL}/api/beansdetails/${beansId}`,
+				{
+					headers: {
+						Authorization: `Bearer ${storedToken}`,
+					},
+				}
+			);
+
+			setStore(response.data.store);
+			setOrigin(response.data.origin);
+			setDescription(response.data.description);
+			setLocation(response.data.location);
+			setImageUrl(response.data.imageUrl);
+			//console.log(response.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		getBeansList();
+	}, []);
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (loading) {
 			alert("Image still loading...");
 			return;
 		}
-
-		const newShop = { store, description, location, imageUrl, user: user._id };
+		const editBeans = {
+			store,
+			origin,
+			description,
+			location,
+			imageUrl,
+			user: user._id,
+		};
 		const storedToken = localStorage.getItem("authToken");
 
 		axios
-			.post(`${process.env.REACT_APP_API_URL}/api/coffeeshop`, newShop, {
+			.put(
+				`${process.env.REACT_APP_API_URL}/api/beansdetails/${beansId}`,
+				editBeans,
+				{
+					headers: {
+						Authorization: `Bearer ${storedToken}`,
+					},
+				}
+			)
+			/* .then(() => {
+				getBeansList();
+			}) */
+			.catch((err) => console.log(err));
+
+		setStore("");
+		setOrigin("");
+		setDescription("");
+		setLocation("");
+		setImageUrl("");
+		navigate(`/beansdetails/${beansId}`);
+		authenticateUser();
+	};
+
+	const deleteBeans = () => {
+		const storedToken = localStorage.getItem("authToken");
+
+		axios
+			.delete(`${process.env.REACT_APP_API_URL}/api/beansdetails/${beansId}`, {
 				headers: {
 					Authorization: `Bearer ${storedToken}`,
 				},
 			})
 			.then(() => {
-				getShopList();
+				navigate("/beanslist");
 			})
 			.catch((err) => console.log(err));
-
-		setStore("");
-		setDescription("");
-		setLocation("");
-		setImageUrl("");
 	};
 
 	return (
 		<div className="SignupPage">
-			<h3>Add Shop</h3>
+			<h3>Edit Beans</h3>
 
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="store">
@@ -79,6 +139,16 @@ function AddShop({ getShopList }) {
 						name="store"
 						value={store}
 						onChange={handleStore}
+					/>
+				</label>
+
+				<label htmlFor="origin">
+					Origin:
+					<input
+						type="text"
+						name="origin"
+						value={origin}
+						onChange={handleOrigin}
 					/>
 				</label>
 
@@ -111,10 +181,11 @@ function AddShop({ getShopList }) {
 					/>
 				</label>
 
-				<button type="submit">Add Shop</button>
+				<button type="submit">Edit Beans</button>
 			</form>
+			<button onClick={deleteBeans}>Delete Beans</button>
 		</div>
 	);
 }
 
-export default AddShop;
+export default EditBeans;

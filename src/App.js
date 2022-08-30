@@ -8,6 +8,11 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Private from "./components/Private/Private";
 import BeansDetailsPage from "./pages/DetailsPage/BeansDetailsPage";
+import ShopDetailsPage from "./pages/DetailsPage/ShopDetailsPage";
+import EditBeansPage from "./pages/EditPage/EditBeansPage";
+import EditShopPage from "./pages/EditPage/EditShopPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import EditProfilePage from "./pages/ProfilePage/EditProfilePage";
 
 function App() {
 	return (
@@ -26,10 +31,19 @@ function App() {
 				/>
 
 				<Route
-					path="/beansdetails"
+					path="/beansdetails/:beansId"
 					element={
 						<Private>
 							<BeansDetailsPage />
+						</Private>
+					}
+				/>
+
+				<Route
+					path="/beansdetails/edit/:beansId"
+					element={
+						<Private>
+							<EditBeansPage />
 						</Private>
 					}
 				/>
@@ -42,6 +56,43 @@ function App() {
 						</Private>
 					}
 				/>
+
+				<Route
+					path="/shopdetails/:shopId"
+					element={
+						<Private>
+							<ShopDetailsPage />
+						</Private>
+					}
+				/>
+
+				<Route
+					path="/shopdetails/edit/:shopId"
+					element={
+						<Private>
+							<EditShopPage />
+						</Private>
+					}
+				/>
+
+				<Route
+					path="/profile"
+					element={
+						<Private>
+							<ProfilePage />
+						</Private>
+					}
+				/>
+
+				<Route
+					path="/profile/edit/:userId"
+					element={
+						<Private>
+							<EditProfilePage />
+						</Private>
+					}
+				/>
+
 				<Route path="/signup" element={<SignupPage />} />
 				<Route path="/login" element={<LoginPage />} />
 			</Routes>

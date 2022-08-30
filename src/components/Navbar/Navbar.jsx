@@ -7,9 +7,18 @@ function Navbar() {
 
 	return (
 		<div className="Navbar">
+			
 			<Link to="/">
 				<button>Home</button>
 			</Link>
+
+			{loggedIn && (
+				<>
+					<Link to="/profile">
+						<button>Profile</button>
+					</Link>
+				</>
+			)}
 
 			{loggedIn && (
 				<>

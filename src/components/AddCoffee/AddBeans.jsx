@@ -44,7 +44,10 @@ function AddBeans({ getBeansList }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (loading) alert("Image still loading...");
+		if (loading) {
+			alert("Image still loading...");
+			return;
+		}
 
 		const newBeans = {
 			store,

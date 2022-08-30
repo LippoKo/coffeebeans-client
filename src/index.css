@@ -74,9 +74,10 @@ textarea {
 	border-radius: 4px;
 }
 
-.card img {
+img {
 	width: 50vw;
-	height: auto;
+	max-width: 200px;
+	max-height: 200px;
 }
 
 .card {
