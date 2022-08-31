@@ -56,7 +56,9 @@ function ProfilePage() {
 		<>
 			{user && (
 				<>
-					<img src={user.imageUrl} alt="..." />
+					<figure>
+						<img className="profile-image" src={user.imageUrl} alt="..." />
+					</figure>
 					<h2>{user.username}</h2>
 					<p>{user.firstName}</p>
 					<p>{user.lastName}</p>
@@ -66,37 +68,39 @@ function ProfilePage() {
 				</>
 			)}
 			<h1>My List</h1>
-			<div className="flex flex-col w-full lg:flex-row">
-				<div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
-					{beans.map((myBeans) => {
-						return (
-							<div
-								className="flex flex-col w-full lg:flex-row"
-								key={myBeans._id}
-							>
-								<div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
-									<Link to={`/beansdetails/${myBeans._id}`}>
-										<h3>{myBeans.store}</h3>
-										<h5>{myBeans.description}</h5>
-									</Link>
-								</div>
-							</div>
-						);
-					})}
-				</div>
-				<div className="divider lg:divider-horizontal">OR</div>
-				<div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
-					content
-				</div>
-			</div>
+
+			{beans.map((myBeans) => {
+				return (
+					<div className="container">
+						<div className="create-card card glass" key={myBeans._id}>
+							<Link to={`/beansdetails/${myBeans._id}`}>
+								<figure>
+									<img
+										className="card-image"
+										src={myBeans.imageUrl}
+										alt="..."
+									/>
+								</figure>
+								<h3>{myBeans.store}</h3>
+								<h5>{myBeans.description}</h5>
+							</Link>
+						</div>
+					</div>
+				);
+			})}
 
 			{shop.map((myShop) => {
 				return (
-					<div className="ProjectCard card" key={myShop._id}>
-						<Link to={`/shopdetails/${myShop._id}`}>
-							<h3>{myShop.store}</h3>
-							<h5>{myShop.description}</h5>
-						</Link>
+					<div className="container">
+						<div className="create-card card glass" key={myShop._id}>
+							<Link to={`/shopdetails/${myShop._id}`}>
+								<figure>
+									<img className="card-image" src={myShop.imageUrl} alt="..." />
+								</figure>
+								<h3>{myShop.store}</h3>
+								<h5>{myShop.description}</h5>
+							</Link>
+						</div>
 					</div>
 				);
 			})}

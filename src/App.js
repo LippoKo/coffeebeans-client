@@ -13,6 +13,8 @@ import EditBeansPage from "./pages/EditPage/EditBeansPage";
 import EditShopPage from "./pages/EditPage/EditShopPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import EditProfilePage from "./pages/ProfilePage/EditProfilePage";
+import AddBeans from "./components/AddCoffee/AddBeans";
+import AddShop from "./components/AddCoffee/AddShop";
 
 function App() {
 	return (
@@ -26,6 +28,15 @@ function App() {
 					element={
 						<Private>
 							<BeansListPage />
+						</Private>
+					}
+				/>
+
+				<Route
+					path="/addbeans"
+					element={
+						<Private>
+							<AddBeans />
 						</Private>
 					}
 				/>
@@ -53,6 +64,15 @@ function App() {
 					element={
 						<Private>
 							<ShopListPage />
+						</Private>
+					}
+				/>
+
+				<Route
+					path="/addshop"
+					element={
+						<Private>
+							<AddShop />
 						</Private>
 					}
 				/>

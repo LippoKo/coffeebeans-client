@@ -78,7 +78,7 @@ function AddBeans({ getBeansList }) {
 	};
 
 	return (
-		<div className="card glass">
+		<div className="card">
 			<div className="card-body">
 				<h3>Add Beans</h3>
 

@@ -34,10 +34,12 @@ function BeansDetails() {
 	}, []);
 
 	return (
-		<div>
+		<div className="container">
 			{beans && (
-				<div className="card glass">
-					<img src={beans.imageUrl} alt="..." />
+				<div className="create-card card glass">
+					<figure>
+						<img className="card-image" src={beans.imageUrl} alt="..." />
+					</figure>
 					<h2>{beans.store}</h2>
 					<p>{beans.description}</p>
 					<p>{beans.user._id}</p>
@@ -45,12 +47,12 @@ function BeansDetails() {
 			)}
 			{beans && user._id === beans.user._id && (
 				<Link to={`/beansdetails/edit/${beansId}`}>
-					<button>Edit Beans</button>
+					<button className="btn btn-primary">Edit Beans</button>
 				</Link>
 			)}
 
 			<Link to={"/beanslist"}>
-				<button>Go Back</button>
+				<button className="btn btn-primary">Go Back</button>
 			</Link>
 		</div>
 	);

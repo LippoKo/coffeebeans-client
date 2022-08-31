@@ -33,13 +33,16 @@ function ShopListPage() {
 
 	return (
 		<div className="ProjectListPage">
-			<AddShop getShopList={getShopList} />
-
+			{/* <AddShop getShopList={getShopList} />
+ */}
 			{shopList.map((list) => {
 				return (
-					<div className="ProjectCard card" key={list._id}>
+					<div className="create-card card glass" key={list._id}>
 						<Link to={`/shopdetails/${list._id}`}>
-							<img src={list.imageUrl} alt="..." />
+						<figure>
+
+							<img className="card-image" src={list.imageUrl} alt="..." />
+						</figure>
 							<h3>{list.store}</h3>
 							<h5>{list.description}</h5>
 							<h5>{list.location}</h5>

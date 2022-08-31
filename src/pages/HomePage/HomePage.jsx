@@ -8,9 +8,19 @@ function HomePage() {
 
 	const getImages = async () => {
 		try {
-			let response = await axios.get("https://coffee.alexflipnote.dev/random");
-			setRandomImage(response.data);
-			console.log(response);
+			let response = await axios.get(
+				"https://api.unsplash.com/search/photos/?per_page=10&query=coffee",
+				{
+					headers: {
+						Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_KEY}`,
+					},
+				}
+			);
+
+			console.log(response.data);
+			setRandomImage(
+				response.data.results[Math.floor(Math.random() * 10)].urls.raw
+			);
 		} catch (error) {
 			console.log(error);
 		}
@@ -21,12 +31,14 @@ function HomePage() {
 	}, []);
 
 	return (
-		<div>
-			<h2>Home Page</h2>
-			<img src={randomImage} alt="..." />
-			<ShopListPage />
-			<BeansListPage />
-		</div>
+		<>
+			<div className="container">
+				<h2>Home Page</h2>
+				<img className="home-image" src={randomImage} alt="..." />
+				<BeansListPage />
+				<ShopListPage />
+			</div>
+		</>
 	);
 }
 

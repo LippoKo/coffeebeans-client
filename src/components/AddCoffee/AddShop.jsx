@@ -1,6 +1,8 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/auth.context";
+import { Card } from '@nextui-org/react';
+
 
 function AddShop({ getShopList }) {
 	const [store, setStore] = useState("");
