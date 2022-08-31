@@ -66,16 +66,29 @@ function ProfilePage() {
 				</>
 			)}
 			<h1>My List</h1>
-			{beans.map((myBeans) => {
-				return (
-					<div className="ProjectCard card" key={myBeans._id}>
-						<Link to={`/beansdetails/${myBeans._id}`}>
-							<h3>{myBeans.store}</h3>
-							<h5>{myBeans.description}</h5>
-						</Link>
-					</div>
-				);
-			})}
+			<div className="flex flex-col w-full lg:flex-row">
+				<div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+					{beans.map((myBeans) => {
+						return (
+							<div
+								className="flex flex-col w-full lg:flex-row"
+								key={myBeans._id}
+							>
+								<div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+									<Link to={`/beansdetails/${myBeans._id}`}>
+										<h3>{myBeans.store}</h3>
+										<h5>{myBeans.description}</h5>
+									</Link>
+								</div>
+							</div>
+						);
+					})}
+				</div>
+				<div className="divider lg:divider-horizontal">OR</div>
+				<div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+					content
+				</div>
+			</div>
 
 			{shop.map((myShop) => {
 				return (

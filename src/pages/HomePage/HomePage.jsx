@@ -8,8 +8,8 @@ function HomePage() {
 
 	const getImages = async () => {
 		try {
-			let response = await axios.get("http://coffee.alexflipnote.dev/random");
-			setRandomImage(response.data);
+			let response = await axios.get("https://coffee.alexflipnote.dev/random");
+			setRandomImage(response);
 			console.log(response);
 		} catch (error) {
 			console.log(error);
@@ -23,8 +23,8 @@ function HomePage() {
 	return (
 		<div>
 			<h2>Home Page</h2>
-			<img src={randomImage} alt="..." />
-			{randomImage && <></>}
+			<ShopListPage />
+			<BeansListPage />
 		</div>
 	);
 }

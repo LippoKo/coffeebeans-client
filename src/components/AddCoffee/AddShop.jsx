@@ -68,51 +68,53 @@ function AddShop({ getShopList }) {
 	};
 
 	return (
-		<div className="SignupPage">
+		<div className="card glass">
 			<h3>Add Shop</h3>
+			<div className="justify-center">
+				<form onSubmit={handleSubmit}>
+					<label htmlFor="store">
+						Store:
+						<input
+							type="text"
+							name="store"
+							value={store}
+							onChange={handleStore}
+						/>
+					</label>
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="store">
-					Store:
-					<input
-						type="text"
-						name="store"
-						value={store}
-						onChange={handleStore}
-					/>
-				</label>
+					<label htmlFor="description">
+						Description:
+						<input
+							type="text"
+							name="description"
+							value={description}
+							onChange={handleDescription}
+						/>
+					</label>
 
-				<label htmlFor="description">
-					Description:
-					<input
-						type="text"
-						name="description"
-						value={description}
-						onChange={handleDescription}
-					/>
-				</label>
+					<label htmlFor="location">
+						Location:
+						<input
+							type="text"
+							name="location"
+							value={location}
+							onChange={handleLocation}
+						/>
+					</label>
 
-				<label htmlFor="location">
-					Location:
-					<input
-						type="text"
-						name="location"
-						value={location}
-						onChange={handleLocation}
-					/>
-				</label>
-
-				<label htmlFor="image">
-					Image:
-					<input
-						type="file"
-						accept=".jpg, .png, .jpeg, .webp"
-						onChange={(e) => handleFileUpload(e)}
-					/>
-				</label>
-
-				<button type="submit">Add Shop</button>
-			</form>
+					<label htmlFor="image">
+						Image:
+						<input
+							type="file"
+							accept=".jpg, .png, .jpeg, .webp"
+							onChange={(e) => handleFileUpload(e)}
+						/>
+					</label>
+					<div className="card-actions justify-end">
+						<button type="submit">Add Shop</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	);
 }
