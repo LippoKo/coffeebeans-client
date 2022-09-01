@@ -56,7 +56,7 @@ function LoginPage() {
 						/>
 					</label>
 
-					<button type="submit">Login</button>
+					<button>Login</button>
 				</form>
 
 				{errorMessage && <p>{errorMessage}</p>}

@@ -32,9 +32,8 @@ export default function SignupPage() {
 
 	return (
 		<div className="cont">
-				<h2 className="text-2xl font-bold">SignUp</h2>
+			<h2 className="text-2xl font-bold">SignUp</h2>
 			<div className="SignupPage">
-
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="username">
 						FirstName
@@ -66,7 +65,7 @@ export default function SignupPage() {
 						/>
 					</label>
 
-					<button type="submit">Sign Up</button>
+					<button>Sign Up</button>
 				</form>
 
 				{errorMessage && <p>{errorMessage}</p>}

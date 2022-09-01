@@ -32,8 +32,8 @@ function HomePage() {
 
 	return (
 		<>
-			<div className="container">
-				<h2>Home Page</h2>
+			<div className="cont">
+				<h2 className="text-2xl font-bold">Home Page</h2>
 				<img className="home-image" src={randomImage} alt="..." />
 				<BeansListPage />
 				<ShopListPage />
