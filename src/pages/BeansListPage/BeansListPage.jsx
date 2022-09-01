@@ -38,14 +38,28 @@ function BeansListPage() {
 			{beansList.map((list) => {
 				return (
 					<div className="cont" key={list._id}>
-						<div className="cardul">
+						<div className="card glass  bg-teal-700">
 							<Link to={`/beansdetails/${list._id}`}>
 								<figure>
-									<img className="card-image" src={list.imageUrl} alt="..." />
+									<img
+										className="card-image w-full"
+										src={list.imageUrl}
+										alt="..."
+									/>
 								</figure>
-								<h3>{list.store}</h3>
-								<h5>{list.description}</h5>
-								<h5>{list.location}</h5>
+								<p className="text-lg  text-black">
+									<u>Store</u>
+								</p>
+								<p className="text-xl font-bold">
+									<i>{list.store}</i>
+								</p>
+
+								<p className="text-lg  text-black">
+									<u>Description </u>{" "}
+								</p>
+								<p className="text-sm">
+									<i>{list.description}</i>
+								</p>
 							</Link>
 						</div>
 					</div>

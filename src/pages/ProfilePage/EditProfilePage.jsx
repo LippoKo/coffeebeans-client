@@ -126,7 +126,7 @@ function EditProfile() {
 	return (
 		<div className="cont">
 				<h3 className="text-2xl font-bold">Edit Profile</h3>
-			<div className="SignupPage">
+			<div className="SignupPage glass bg-indigo-700">
 
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="firstName">
@@ -168,9 +168,9 @@ function EditProfile() {
 						/>
 					</label>
 
-					<button>Edit Profile</button>
+					<button className="btn btn-primary btn-xs">Edit Profile</button>
 				</form>
-				<button onClick={deleteProfile}>Delete Profile</button>
+				<button className="btn btn-primary btn-xs" onClick={deleteProfile}>Delete Profile</button>
 			</div>
 		</div>
 	);

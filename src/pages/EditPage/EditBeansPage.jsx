@@ -129,9 +129,8 @@ function EditBeans() {
 
 	return (
 		<div className="cont">
-				<h3 className="text-2xl font-bold">Edit Beans</h3>
-			<div className="SignupPage">
-
+			<h3 className="text-2xl font-bold">Edit Beans</h3>
+			<div className="cardul glass bg-indigo-700 flex items-center flex-col">
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="store">
 						Store:
@@ -182,9 +181,9 @@ function EditBeans() {
 						/>
 					</label>
 
-					<button>Edit Beans</button>
+					<button className="btn btn-primary btn-xs">Edit Beans</button>
 				</form>
-				<button onClick={deleteBeans}>Delete Beans</button>
+				<button className="btn btn-primary btn-xs" onClick={deleteBeans}>Delete Beans</button>
 			</div>
 		</div>
 	);

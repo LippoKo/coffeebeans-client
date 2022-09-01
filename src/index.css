@@ -4,11 +4,14 @@
 
 body {
 	margin: 0;
+	margin-top: 100px;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
 		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	/* 	background-color: rgb(56, 1, 184);
+ */
 }
 
 /* Colors */
@@ -23,7 +26,7 @@ body {
 	--button-color: hsl(81, 100%, 44%);
 	--navbar-color: hsl(338, 100%, 48%);
 	--background-color: hsl(0, 0%, 95%);
-	--error-color: hsl(342, 94%, 45%);
+	--error-color: hsl(0, 100%, 50%);
 }
 
 /* body {
@@ -40,13 +43,76 @@ body {
 	padding: 20px;
 }
 
+.card-image {
+	width: 100vw;
+	height: 40vw;
+}
+
+.home-image {
+	height: 60vw;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.image {
+	max-height: 60vw;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.divider-1 {
+	height: 1px;
+	margin-top: 30px;
+	background: linear-gradient(
+		270deg,
+		hsl(338, 100%, 48%),
+		hsla(159, 65%, 88%, 0.34)
+	);
+}
+
+.divider-2 {
+	height: 1px;
+	margin-top: 30px;
+	background: linear-gradient(
+		270deg,
+		hsla(159, 65%, 88%, 0.34),
+		hsl(338, 100%, 48%)
+	);
+}
+
+.profile-image {
+	border-radius: 20px;
+}
+
+hr {
+	margin-top: 10px;
+	box-shadow: 0px 6px 6px var(--navbar-color);
+}
+
 h1,
 h2,
 h3,
 h4,
-p {
+h5 {
+	margin-top: 20px;
 	margin-bottom: 20px;
+	color: #dfeef9;
 }
+
+p {
+	margin-top: 10px;
+}
+
+.error {
+	background: var(--error-color);
+	box-sizing: border-box;
+	color: var(--background-color);
+	margin: 20px auto;
+	padding: 10px;
+	width: 100%;
+	border-radius: 5px;
+}
+
 /* index.css */
 
 button,
@@ -54,14 +120,14 @@ select {
 	padding: 5px 10px;
 	min-width: 50px;
 	margin: 5px;
-	font-size: 18px;
+	margin-top: 10px;
 	border-radius: 5px;
-	background-color: rgb(147, 226, 0);
 }
 
 label {
 	width: 200px;
 	display: block;
+	color: #dfeef9;
 }
 
 input,
@@ -70,15 +136,17 @@ textarea {
 	display: inline-block;
 	margin: 10px;
 	border-radius: 3px;
+	color: black;
 }
 
 .Nav {
 	background: hsl(338, 100%, 48%);
-	padding: 0px 20px;
-	box-shadow: 0px 1px 2px rgb(4, 238, 238);
+	box-shadow: 0px 1px 2px var(--navbar-color);
 	width: 100%;
 	margin-bottom: 15px;
-	padding: 5px;
+	position: fixed;
+	top: -16px;
+	z-index: 1;
 }
 
 .Navbar li {
@@ -93,9 +161,9 @@ textarea {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	box-shadow: 0px 2px 3px rgb(4, 238, 238);
+	box-shadow: 0px 2px 3px var(--navbar-color);
 	margin-bottom: 20px;
-	background: hsla(152, 100%, 29%, 0.87);
+
 	border-radius: 5px;
 }
 
@@ -104,11 +172,16 @@ textarea {
 } */
 
 .cardul {
-	box-shadow: 0px 2px 3px rgb(4, 238, 238);
+	box-shadow: 0px 2px 3px var(--navbar-color);
 	margin: 0 auto;
 	margin-bottom: 20px;
-	background: hsl(152, 100%, 24%);
+
 	border-radius: 10px;
+}
+
+.card {
+	box-shadow: 0px 2px 3px var(--navbar-color);
+	margin-bottom: 20px;
 }
 
 .ProjectCard h3::after {
@@ -120,8 +193,8 @@ textarea {
 .AddProject,
 .AddTask {
 	background: #f9eec3;
-	border: 1px solid rgb(4, 238, 238);
-	box-shadow: 0px 2px 3px rgb(4, 238, 238);
+	border: 1px solid var(--navbar-color);
+	box-shadow: 0px 2px 3px var(--navbar-color);
 	width: 400px;
 	text-align: center;
 	margin: 0 auto;

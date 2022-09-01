@@ -36,23 +36,38 @@ function ShopDetails() {
 	return (
 		<div className="cont">
 			{shop && (
-				<div className="cardul">
+				<div className="card glass bg-indigo-700">
 					<figure>
-						<img className="card-image" src={shop.imageUrl} alt="..." />
+						<img className="card-image w-full" src={shop.imageUrl} alt="..." />
 					</figure>
-					<h2>{shop.store}</h2>
-					<p>{shop.description}</p>
-					<p>{shop.user._id}</p>
+					<p className="text-lg text-black">
+						<u>Store</u>
+					</p>
+					<p className="text-xl font-bold">
+						<i>{shop.store}</i>
+					</p>
+					<p className="text-lg  text-black">
+						<u>Description </u>
+					</p>
+					<p className="text-sm">
+						<i>{shop.description}</i>
+					</p>
+					<p className="text-lg  text-black">
+						<u>Location </u>
+					</p>
+					<p className="text-lg">
+						<i>{shop.location}</i>
+					</p>
 				</div>
 			)}
 			{shop && user._id === shop.user._id && (
 				<Link to={`/shopdetails/edit/${shopId}`}>
-					<button>Edit Shop</button>
+					<button className="btn btn-primary btn-sm">Edit Shop</button>
 				</Link>
 			)}
 
 			<Link to={"/shoplist"}>
-				<button>Go Back</button>
+				<button className="btn btn-primary btn-sm">Go Back</button>
 			</Link>
 		</div>
 	);

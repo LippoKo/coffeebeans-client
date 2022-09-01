@@ -7,7 +7,7 @@ function Navbar() {
 
 	return (
 		<>
-			<div className="Nav navbar bg-base-100">
+			<div className="Nav navbar bg-indigo-700">
 				<div className="navbar-start">
 					{loggedIn && (
 						<>
@@ -15,7 +15,7 @@ function Navbar() {
 								<label tabIndex="0" className="btn btn-ghost btn-circle">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
-										className="h-5 w-5"
+										className="h-8 w-8"
 										fill="none"
 										viewBox="0 0 24 24"
 										stroke="currentColor"
@@ -30,20 +30,20 @@ function Navbar() {
 								</label>
 								<ul
 									tabIndex="0"
-									className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+									className="menu menu-compact dropdown-content mt-3 shadow bg-base-100 rounded-box w-52"
 								>
-									<li>
+									<button className="btn btn-ghost normal-case text-sm">
 										<Link to="/beanslist">CoffeeBeans</Link>
-									</li>
-									<li>
+									</button>
+									<button className="btn btn-ghost normal-case text-sm">
 										<Link to="/shoplist">CoffeeShop</Link>
-									</li>
-									<li>
-										<Link to="/addbeans">Add Beans</Link>
-									</li>
-									<li>
-										<Link to="/addshop">Add Shop</Link>
-									</li>
+									</button>
+									<button className="btn btn-ghost normal-case text-sm">
+										<Link to="/addbeans">+ Add Beans</Link>
+									</button>
+									<button className="btn btn-ghost normal-case text-sm">
+										<Link to="/addshop">+ Add Shop</Link>
+									</button>
 								</ul>
 							</div>
 						</>
@@ -70,9 +70,9 @@ function Navbar() {
 									className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
 								>
 									<li>
-										<Link to="/profile">
-											<button className="btn btn-ghost normal-case text-sm">Profile</button>
-										</Link>
+										<button className="btn btn-ghost normal-case text-sm">
+											<Link to="/profile">Profile</Link>
+										</button>
 									</li>
 
 									<li>
@@ -86,17 +86,6 @@ function Navbar() {
 								</ul>
 							</div>
 						</div>
-					</>
-				)}
-				{!loggedIn && (
-					<>
-						<Link to="/signup">
-							<button className="btn">Signup</button>
-						</Link>
-
-						<Link to="/login">
-							<button className="btn">Login</button>
-						</Link>
 					</>
 				)}
 			</div>

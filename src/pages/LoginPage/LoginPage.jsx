@@ -37,7 +37,7 @@ function LoginPage() {
 			<div className="LoginPage">
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="username">
-						Username
+						Username:
 						<input
 							type="text"
 							name="username"
@@ -47,7 +47,7 @@ function LoginPage() {
 					</label>
 
 					<label htmlFor="Password">
-						Password
+						Password:
 						<input
 							type="password"
 							name="password"
@@ -56,12 +56,14 @@ function LoginPage() {
 						/>
 					</label>
 
-					<button>Login</button>
+					<button className="btn btn-primary btn-xs">Login</button>
 				</form>
 
-				{errorMessage && <p>{errorMessage}</p>}
+				{errorMessage && <p className="error">{errorMessage}</p>}
 				<p>Don't have an account?</p>
-				<Link to="/login">Login</Link>
+				<button className="btn btn-primary btn-xs">
+					<Link to="/signup">SignUp</Link>
+				</button>
 			</div>
 		</div>
 	);

@@ -23,7 +23,7 @@ function BeansDetails() {
 				}
 			);
 			setBeans(response.data);
-			console.log(response.data);
+			//console.log(response.data);
 		} catch (error) {
 			console.log(error);
 		}
@@ -36,23 +36,44 @@ function BeansDetails() {
 	return (
 		<div className="cont">
 			{beans && (
-				<div className="cardul">
+				<div className="card glass bg-teal-700">
 					<figure>
-						<img className="card-image" src={beans.imageUrl} alt="..." />
+						<img className="card-image w-full" src={beans.imageUrl} alt="..." />
 					</figure>
-					<h2>{beans.store}</h2>
-					<p>{beans.description}</p>
-					<p>{beans.user._id}</p>
+					<p className="text-lg text-black">
+						<u>Store</u>
+					</p>
+					<p className="text-xl font-bold">
+						<i>{beans.store}</i>
+					</p>
+					<p className="text-lg  text-black">
+						<u>Origin </u>
+					</p>
+					<p className="text-lg">
+						<i>{beans.origin}</i>
+					</p>
+					<p className="text-lg  text-black">
+						<u>Description </u>
+					</p>
+					<p className="text-sm">
+						<i>{beans.description}</i>
+					</p>
+					<p className="text-lg  text-black">
+						<u>Location </u>
+					</p>
+					<p className="text-lg">
+						<i>{beans.location}</i>
+					</p>
 				</div>
 			)}
 			{beans && user._id === beans.user._id && (
 				<Link to={`/beansdetails/edit/${beansId}`}>
-					<button>Edit Beans</button>
+					<button className="btn btn-primary btn-sm">Edit Beans</button>
 				</Link>
 			)}
 
 			<Link to={"/beanslist"}>
-				<button>Go Back</button>
+				<button className="btn btn-primary btn-sm">Go Back</button>
 			</Link>
 		</div>
 	);

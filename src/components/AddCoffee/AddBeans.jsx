@@ -1,8 +1,9 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/auth.context";
+import { useNavigate } from "react-router-dom";
 
-function AddBeans({ getBeansList }) {
+function AddBeans() {
 	const [store, setStore] = useState("");
 	const [origin, setOrigin] = useState("");
 	const [description, setDescription] = useState("");
@@ -11,6 +12,7 @@ function AddBeans({ getBeansList }) {
 	const [loading, setLoading] = useState(false);
 
 	const { user } = useContext(AuthContext);
+	const navigate = useNavigate();
 
 	const handleStore = (e) => setStore(e.target.value);
 	const handleOrigin = (e) => setOrigin(e.target.value);
@@ -66,7 +68,7 @@ function AddBeans({ getBeansList }) {
 				},
 			})
 			.then(() => {
-				getBeansList();
+				console.log("Beans Added!");
 			})
 			.catch((err) => console.log(err));
 
@@ -75,13 +77,13 @@ function AddBeans({ getBeansList }) {
 		setDescription("");
 		setLocation("");
 		setImageUrl("");
+		navigate("/beanslist");
 	};
 
 	return (
 		<div className="cont">
-				<h3 className="text-2xl font-bold">Add Beans</h3>
-			<div className="SignupPage">
-
+			<h3 className="text-2xl font-bold">Add Beans</h3>
+			<div className="SignupPage glass bg-indigo-700">
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="store">
 						Store:
@@ -132,7 +134,7 @@ function AddBeans({ getBeansList }) {
 						/>
 					</label>
 
-					<button>Add Beans</button>
+					<button className="btn btn-primary btn-sm">Add Beans</button>
 				</form>
 			</div>
 		</div>

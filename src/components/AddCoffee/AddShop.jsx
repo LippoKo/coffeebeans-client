@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/auth.context";
-import { Card } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
+
 
 function AddShop({ getShopList }) {
 	const [store, setStore] = useState("");
@@ -11,6 +12,7 @@ function AddShop({ getShopList }) {
 	const [loading, setLoading] = useState(false);
 
 	const { user } = useContext(AuthContext);
+	const navigate = useNavigate();
 
 	const handleStore = (e) => setStore(e.target.value);
 	const handleDescription = (e) => setDescription(e.target.value);
@@ -58,7 +60,7 @@ function AddShop({ getShopList }) {
 				},
 			})
 			.then(() => {
-				getShopList();
+				console.log('Shop Added!')
 			})
 			.catch((err) => console.log(err));
 
@@ -66,12 +68,13 @@ function AddShop({ getShopList }) {
 		setDescription("");
 		setLocation("");
 		setImageUrl("");
+		navigate("/shoplist");
 	};
 
 	return (
 		<div className="cont">
-				<h3 className="text-2xl font-bold">Add Shop</h3>
-			<div className="SignupPage">
+			<h3 className="text-2xl font-bold">Add Shop</h3>
+			<div className="SignupPage glass bg-indigo-700">
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="store">
 						Store:
@@ -112,7 +115,7 @@ function AddShop({ getShopList }) {
 						/>
 					</label>
 
-					<button>Add Shop</button>
+					<button className="btn btn-primary btn-sm">Add Shop</button>
 				</form>
 			</div>
 		</div>

@@ -127,7 +127,7 @@ function EditShop() {
 	return (
 		<div className="cont">
 			<h3 className="text-2xl font-bold">Edit shop</h3>
-			<div className="SignupPage">
+			<div className="cardul glass bg-indigo-700 flex items-center flex-col">
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="store">
 						Store:
@@ -168,9 +168,9 @@ function EditShop() {
 						/>
 					</label>
 
-					<button>Edit shop</button>
+					<button className="btn btn-primary btn-xs">Edit shop</button>
 				</form>
-				<button onClick={deleteShop}>Delete Shop</button>
+				<button className="btn btn-primary btn-xs" onClick={deleteShop}>Delete Shop</button>
 			</div>
 		</div>
 	);

@@ -4,6 +4,8 @@ import { useNavigate, Link } from "react-router-dom";
 
 export default function SignupPage() {
 	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [errorMessage, setErrorMessage] = useState(null);
@@ -11,13 +13,15 @@ export default function SignupPage() {
 	const navigate = useNavigate();
 
 	const handleFirstName = (e) => setFirstName(e.target.value);
+	const handleLastName = (e) => setLastName(e.target.value);
+	const handleEmail = (e) => setEmail(e.target.value);
 	const handleUsername = (e) => setUsername(e.target.value);
 	const handlePassword = (e) => setPassword(e.target.value);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		const newUser = { firstName, username, password };
+		const newUser = { firstName, lastName, email, username, password };
 
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/auth/signup`, newUser)
@@ -35,18 +39,38 @@ export default function SignupPage() {
 			<h2 className="text-2xl font-bold">SignUp</h2>
 			<div className="SignupPage">
 				<form onSubmit={handleSubmit}>
-					<label htmlFor="username">
-						FirstName
+					<label htmlFor="firstname">
+						FirstName:
 						<input
 							type="text"
-							name="username"
+							name="firstname"
 							value={firstName}
 							onChange={handleFirstName}
 						/>
 					</label>
 
+					<label htmlFor="lastname">
+						LastName:
+						<input
+							type="text"
+							name="lastname"
+							value={lastName}
+							onChange={handleLastName}
+						/>
+					</label>
+
+					<label htmlFor="email">
+						Email:
+						<input
+							type="email"
+							name="email"
+							value={email}
+							onChange={handleEmail}
+						/>
+					</label>
+
 					<label htmlFor="username">
-						Username
+						Username:
 						<input
 							type="text"
 							name="username"
@@ -56,7 +80,7 @@ export default function SignupPage() {
 					</label>
 
 					<label htmlFor="Password">
-						Password
+						Password:
 						<input
 							type="password"
 							name="password"
@@ -65,12 +89,14 @@ export default function SignupPage() {
 						/>
 					</label>
 
-					<button>Sign Up</button>
+					<button className="btn btn-primary btn-xs">Sign Up</button>
 				</form>
 
-				{errorMessage && <p>{errorMessage}</p>}
+				{errorMessage && <p className="error">{errorMessage}</p>}
 				<p>Already have an account?</p>
-				<Link to="/login">Login</Link>
+				<button className="btn btn-primary btn-xs">
+					<Link to="/login">Login</Link>
+				</button>
 			</div>
 		</div>
 	);
