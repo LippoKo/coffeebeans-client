@@ -9,6 +9,7 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: hsla(261, 61%, 54%, 0.925);
 }
 
 /* Colors */
@@ -96,7 +97,6 @@ textarea {
 	box-shadow: 0px 2px 3px rgb(4, 238, 238);
 	margin-bottom: 20px;
 	background: hsla(152, 100%, 29%, 0.87);
-	border-radius: 4px;
 }
 
 /* .cardul img {
