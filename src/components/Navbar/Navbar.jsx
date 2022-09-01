@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
-import Dropdown2 from "../Dropdown/Dropdown";
 
 function Navbar() {
 	const { loggedIn, user, logout } = useContext(AuthContext);
 
 	return (
 		<>
-			<div className="navbar bg-base-100">
+			<div className="Nav navbar bg-base-100">
 				<div className="navbar-start">
 					{loggedIn && (
 						<>
@@ -34,13 +33,16 @@ function Navbar() {
 									className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
 								>
 									<li>
+										<Link to="/beanslist">CoffeeBeans</Link>
+									</li>
+									<li>
+										<Link to="/shoplist">CoffeeShop</Link>
+									</li>
+									<li>
 										<Link to="/addbeans">Add Beans</Link>
 									</li>
 									<li>
 										<Link to="/addshop">Add Shop</Link>
-									</li>
-									<li>
-										<Link to="/profile">Add Shop</Link>
 									</li>
 								</ul>
 							</div>
@@ -68,11 +70,11 @@ function Navbar() {
 									className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
 								>
 									<li>
-										<Link to="/profile">Profile</Link>
+										<Link to="/profile">
+											<button className="btn btn-ghost normal-case text-sm">Profile</button>
+										</Link>
 									</li>
-									<li>
-										<a>Settings</a>
-									</li>
+
 									<li>
 										<button
 											className="btn btn-ghost normal-case text-sm"

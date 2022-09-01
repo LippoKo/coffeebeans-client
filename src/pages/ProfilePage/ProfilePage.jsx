@@ -71,8 +71,9 @@ function ProfilePage() {
 
 			{beans.map((myBeans) => {
 				return (
-					<div className="container">
-						<div className="create-card card glass" key={myBeans._id}>
+					<div className="cont">
+						<h1>Beans</h1>
+						<div className="card" key={myBeans._id}>
 							<Link to={`/beansdetails/${myBeans._id}`}>
 								<figure>
 									<img
@@ -91,8 +92,9 @@ function ProfilePage() {
 
 			{shop.map((myShop) => {
 				return (
-					<div className="container">
-						<div className="create-card card glass" key={myShop._id}>
+					<div className="cont">
+						<h1>Shop</h1>
+						<div className="card glass" key={myShop._id}>
 							<Link to={`/shopdetails/${myShop._id}`}>
 								<figure>
 									<img className="card-image" src={myShop.imageUrl} alt="..." />

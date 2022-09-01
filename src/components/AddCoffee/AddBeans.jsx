@@ -78,9 +78,9 @@ function AddBeans({ getBeansList }) {
 	};
 
 	return (
-		<div className="card">
-			<div className="card-body">
-				<h3>Add Beans</h3>
+		<div className="cont">
+				<h3 className="text-2xl font-bold">Add Beans</h3>
+			<div className="SignupPage">
 
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="store">
@@ -132,9 +132,7 @@ function AddBeans({ getBeansList }) {
 						/>
 					</label>
 
-					<button className="btn" type="submit">
-						Add Beans
-					</button>
+					<button>Add Beans</button>
 				</form>
 			</div>
 		</div>

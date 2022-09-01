@@ -34,19 +34,20 @@ function ShopListPage() {
 	return (
 		<div className="ProjectListPage">
 			{/* <AddShop getShopList={getShopList} />
- */}
+			 */}
 			{shopList.map((list) => {
 				return (
-					<div className="create-card card glass" key={list._id}>
-						<Link to={`/shopdetails/${list._id}`}>
-						<figure>
-
-							<img className="card-image" src={list.imageUrl} alt="..." />
-						</figure>
-							<h3>{list.store}</h3>
-							<h5>{list.description}</h5>
-							<h5>{list.location}</h5>
-						</Link>
+					<div className="cont" key={list._id}>
+						<div className="cardul">
+							<Link to={`/shopdetails/${list._id}`}>
+								<figure>
+									<img className="card-image" src={list.imageUrl} alt="..." />
+								</figure>
+								<h3>{list.store}</h3>
+								<h5>{list.description}</h5>
+								<h5>{list.location}</h5>
+							</Link>
+						</div>
 					</div>
 				);
 			})}

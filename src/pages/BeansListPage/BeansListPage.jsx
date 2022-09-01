@@ -37,8 +37,8 @@ function BeansListPage() {
 
 			{beansList.map((list) => {
 				return (
-					<div className="container" key={list._id}>
-						<div className="create-card card glass">
+					<div className="cont" key={list._id}>
+						<div className="cardul">
 							<Link to={`/beansdetails/${list._id}`}>
 								<figure>
 									<img className="card-image" src={list.imageUrl} alt="..." />

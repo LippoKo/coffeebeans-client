@@ -1,8 +1,7 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/auth.context";
-import { Card } from '@nextui-org/react';
-
+import { Card } from "@nextui-org/react";
 
 function AddShop({ getShopList }) {
 	const [store, setStore] = useState("");
@@ -70,9 +69,9 @@ function AddShop({ getShopList }) {
 	};
 
 	return (
-		<div className="card glass">
-			<h3>Add Shop</h3>
-			<div className="justify-center">
+		<div className="cont">
+				<h3 className="text-2xl font-bold">Add Shop</h3>
+			<div className="SignupPage">
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="store">
 						Store:
@@ -112,9 +111,8 @@ function AddShop({ getShopList }) {
 							onChange={(e) => handleFileUpload(e)}
 						/>
 					</label>
-					<div className="card-actions justify-end">
-						<button type="submit">Add Shop</button>
-					</div>
+
+					<button>Add Shop</button>
 				</form>
 			</div>
 		</div>

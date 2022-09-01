@@ -31,46 +31,48 @@ export default function SignupPage() {
 	};
 
 	return (
-		<div className="SignupPage">
-			<h2>SignUp</h2>
+		<div className="cont">
+				<h2 className="text-2xl font-bold">SignUp</h2>
+			<div className="SignupPage">
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="username">
-					FirstName
-					<input
-						type="text"
-						name="username"
-						value={firstName}
-						onChange={handleFirstName}
-					/>
-				</label>
+				<form onSubmit={handleSubmit}>
+					<label htmlFor="username">
+						FirstName
+						<input
+							type="text"
+							name="username"
+							value={firstName}
+							onChange={handleFirstName}
+						/>
+					</label>
 
-				<label htmlFor="username">
-					Username
-					<input
-						type="text"
-						name="username"
-						value={username}
-						onChange={handleUsername}
-					/>
-				</label>
+					<label htmlFor="username">
+						Username
+						<input
+							type="text"
+							name="username"
+							value={username}
+							onChange={handleUsername}
+						/>
+					</label>
 
-				<label htmlFor="Password">
-					Password
-					<input
-						type="password"
-						name="password"
-						value={password}
-						onChange={handlePassword}
-					/>
-				</label>
+					<label htmlFor="Password">
+						Password
+						<input
+							type="password"
+							name="password"
+							value={password}
+							onChange={handlePassword}
+						/>
+					</label>
 
-				<button type="submit">Sign Up</button>
-			</form>
+					<button type="submit">Sign Up</button>
+				</form>
 
-			{errorMessage && <p>{errorMessage}</p>}
-			<p>Already have an account?</p>
-			<Link to="/login">Login</Link>
+				{errorMessage && <p>{errorMessage}</p>}
+				<p>Already have an account?</p>
+				<Link to="/login">Login</Link>
+			</div>
 		</div>
 	);
 }

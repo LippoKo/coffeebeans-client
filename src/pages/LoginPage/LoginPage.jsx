@@ -32,36 +32,37 @@ function LoginPage() {
 	};
 
 	return (
-		<div className="LoginPage">
-			<h2>Login</h2>
+		<div className="cont">
+			<h2 className="text-2xl font-bold">Login</h2>
+			<div className="LoginPage">
+				<form onSubmit={handleSubmit}>
+					<label htmlFor="username">
+						Username
+						<input
+							type="text"
+							name="username"
+							value={username}
+							onChange={handleUsername}
+						/>
+					</label>
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="username">
-					Username
-					<input
-						type="text"
-						name="username"
-						value={username}
-						onChange={handleUsername}
-					/>
-				</label>
+					<label htmlFor="Password">
+						Password
+						<input
+							type="password"
+							name="password"
+							value={password}
+							onChange={handlePassword}
+						/>
+					</label>
 
-				<label htmlFor="Password">
-					Password
-					<input
-						type="password"
-						name="password"
-						value={password}
-						onChange={handlePassword}
-					/>
-				</label>
+					<button type="submit">Login</button>
+				</form>
 
-				<button type="submit">Login</button>
-			</form>
-
-			{errorMessage && <p>{errorMessage}</p>}
-			<p>Don't have an account?</p>
-			<Link to="/login">Login</Link>
+				{errorMessage && <p>{errorMessage}</p>}
+				<p>Don't have an account?</p>
+				<Link to="/login">Login</Link>
+			</div>
 		</div>
 	);
 }

@@ -124,52 +124,54 @@ function EditProfile() {
 	};
 
 	return (
-		<div className="SignupPage">
-			<h3>Edit Profile</h3>
+		<div className="cont">
+				<h3 className="text-2xl font-bold">Edit Profile</h3>
+			<div className="SignupPage">
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="firstName">
-					firstName:
-					<input
-						type="text"
-						name="firstName"
-						value={firstName}
-						onChange={handleFirstName}
-					/>
-				</label>
+				<form onSubmit={handleSubmit}>
+					<label htmlFor="firstName">
+						First Name:
+						<input
+							type="text"
+							name="firstName"
+							value={firstName}
+							onChange={handleFirstName}
+						/>
+					</label>
 
-				<label htmlFor="lastName">
-					lastName:
-					<input
-						type="text"
-						name="lastName"
-						value={lastName}
-						onChange={handleLastName}
-					/>
-				</label>
+					<label htmlFor="lastName">
+						Last Name:
+						<input
+							type="text"
+							name="lastName"
+							value={lastName}
+							onChange={handleLastName}
+						/>
+					</label>
 
-				<label htmlFor="username">
-					username:
-					<input
-						type="text"
-						name="username"
-						value={username}
-						onChange={handleUsername}
-					/>
-				</label>
+					<label htmlFor="username">
+						Username:
+						<input
+							type="text"
+							name="username"
+							value={username}
+							onChange={handleUsername}
+						/>
+					</label>
 
-				<label htmlFor="image">
-					Image:
-					<input
-						type="file"
-						accept=".jpg, .png, .jpeg, .webp"
-						onChange={(e) => handleFileUpload(e)}
-					/>
-				</label>
+					<label htmlFor="image">
+						Image:
+						<input
+							type="file"
+							accept=".jpg, .png, .jpeg, .webp"
+							onChange={(e) => handleFileUpload(e)}
+						/>
+					</label>
 
-				<button type="submit">Edit Profile</button>
-			</form>
-			<button onClick={deleteProfile}>Delete Profile</button>
+					<button>Edit Profile</button>
+				</form>
+				<button onClick={deleteProfile}>Delete Profile</button>
+			</div>
 		</div>
 	);
 }

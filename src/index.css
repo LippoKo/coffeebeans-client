@@ -1,6 +1,6 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
 body {
 	margin: 0;
@@ -9,7 +9,6 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: hsl(273, 100%, 49%);
 }
 
 /* Colors */
@@ -27,42 +26,127 @@ body {
 	--error-color: hsl(342, 94%, 45%);
 }
 
-/* All Pages */
-.container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+/* body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+} */
+
+.cont {
+	margin: 20px;
+	padding: 20px;
 }
 
-button {
-	margin-bottom: 5px;
-	margin-top: 5px;
+h1,
+h2,
+h3,
+h4,
+p {
+	margin-bottom: 20px;
 }
+/* index.css */
 
-/* NavBar */
-
-/* Home Page */
-.home-image {
-	width: 50vw;
-	height: 50vh;
-}
-
-/* Cards */
-
-.create-card {
+button,
+select {
+	padding: 5px 10px;
+	min-width: 50px;
 	margin: 5px;
-	width: 30vw;
-	height: 60vh;
+	font-size: 18px;
+	border-radius: 5px;
+	background-color: rgb(147, 226, 0);
 }
 
-.card-image {
+label {
+	width: 200px;
+	display: block;
+}
+
+input,
+textarea {
+	padding: 10px;
+	display: inline-block;
+	margin: 10px;
+	border-radius: 10px;
+}
+
+.Nav {
+	background: hsl(338, 100%, 48%);
+	padding: 0px 20px;
+	box-shadow: 0px 1px 2px rgb(4, 238, 238);
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 5px;
+}
+
+.Navbar li {
+	list-style: none;
+	color: white;
+	font-size: 24px;
+	font-weight: 600;
+}
+
+.SignupPage,
+.LoginPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-shadow: 0px 2px 3px rgb(4, 238, 238);
+	margin-bottom: 20px;
+	background: hsla(152, 100%, 29%, 0.87);
+	border-radius: 4px;
+}
+
+/* .cardul img {
 	width: 50vw;
-	height: 40vh;
-	margin-bottom: 10px;
+} */
+
+.cardul {
+	box-shadow: 0px 2px 3px rgb(4, 238, 238);
+	margin: 0 auto;
+	margin-bottom: 20px;
+	background: hsl(152, 100%, 24%);
+	border-radius: 10px;
 }
 
-/* Profile Page */
-.profile-image {
-	max-width: 50px;
+.ProjectCard h3::after {
+	content: url("https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m3/icon-expand.png");
+	margin-left: 5px;
+}
+
+.EditProjectPage,
+.AddProject,
+.AddTask {
+	background: #f9eec3;
+	border: 1px solid rgb(4, 238, 238);
+	box-shadow: 0px 2px 3px rgb(4, 238, 238);
+	width: 400px;
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+.EditProjectPage {
+	background-color: hsl(152, 100%, 24%);
+}
+
+.EditProjectPage form,
+.AddTask form,
+.AddProject form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.AddTask button,
+.AddProject button {
+	display: block;
+}
+
+.TaskCard {
+	background-color: #dfeef9;
 }

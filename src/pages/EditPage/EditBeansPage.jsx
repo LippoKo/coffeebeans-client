@@ -128,62 +128,64 @@ function EditBeans() {
 	};
 
 	return (
-		<div className="SignupPage">
-			<h3>Edit Beans</h3>
+		<div className="cont">
+				<h3 className="text-2xl font-bold">Edit Beans</h3>
+			<div className="SignupPage">
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="store">
-					Store:
-					<input
-						type="text"
-						name="store"
-						value={store}
-						onChange={handleStore}
-					/>
-				</label>
+				<form onSubmit={handleSubmit}>
+					<label htmlFor="store">
+						Store:
+						<input
+							type="text"
+							name="store"
+							value={store}
+							onChange={handleStore}
+						/>
+					</label>
 
-				<label htmlFor="origin">
-					Origin:
-					<input
-						type="text"
-						name="origin"
-						value={origin}
-						onChange={handleOrigin}
-					/>
-				</label>
+					<label htmlFor="origin">
+						Origin:
+						<input
+							type="text"
+							name="origin"
+							value={origin}
+							onChange={handleOrigin}
+						/>
+					</label>
 
-				<label htmlFor="description">
-					Description:
-					<input
-						type="text"
-						name="description"
-						value={description}
-						onChange={handleDescription}
-					/>
-				</label>
+					<label htmlFor="description">
+						Description:
+						<input
+							type="text"
+							name="description"
+							value={description}
+							onChange={handleDescription}
+						/>
+					</label>
 
-				<label htmlFor="location">
-					Location:
-					<input
-						type="text"
-						name="location"
-						value={location}
-						onChange={handleLocation}
-					/>
-				</label>
+					<label htmlFor="location">
+						Location:
+						<input
+							type="text"
+							name="location"
+							value={location}
+							onChange={handleLocation}
+						/>
+					</label>
 
-				<label htmlFor="image">
-					Image:
-					<input
-						type="file"
-						accept=".jpg, .png, .jpeg, .webp"
-						onChange={(e) => handleFileUpload(e)}
-					/>
-				</label>
+					<label htmlFor="image">
+						Image:
+						<input
+							type="file"
+							accept=".jpg, .png, .jpeg, .webp"
+							onChange={(e) => handleFileUpload(e)}
+						/>
+					</label>
 
-				<button type="submit">Edit Beans</button>
-			</form>
-			<button onClick={deleteBeans}>Delete Beans</button>
+					<button>Edit Beans</button>
+				</form>
+				<button onClick={deleteBeans}>Delete Beans</button>
+			</div>
 		</div>
 	);
 }
