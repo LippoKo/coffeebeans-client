@@ -59,10 +59,18 @@ function ProfilePage() {
 					<figure className="flex justify-center">
 						<img className="profile-image w-32" src={user.imageUrl} alt="..." />
 					</figure>
-					<h2 className="text-2xl font-bold"><i>{user.username}</i> </h2>
-					<p className="text-sm">Name: <i className="text-xl">{user.firstName}</i></p>
-					<p className="text-sm">LastName: <i className="text-xl">{user.lastName}</i> </p>
-					<p className="text-sm">Email: <i className="text-xl">{user.email}</i> </p>
+					<h2 className="text-2xl font-bold">
+						<i>{user.username}</i>{" "}
+					</h2>
+					<p className="text-sm">
+						Name: <i className="text-xl">{user.firstName}</i>
+					</p>
+					<p className="text-sm">
+						LastName: <i className="text-xl">{user.lastName}</i>{" "}
+					</p>
+					<p className="text-sm">
+						Email: <i className="text-sm">{user.email}</i>{" "}
+					</p>
 					<Link to={`/profile/edit/${loggedUser._id}`}>
 						<button className="btn btn-primary btn-sm">Edit Profile</button>
 					</Link>
@@ -106,7 +114,7 @@ function ProfilePage() {
 			{shop.map((myShop) => {
 				return (
 					<div className="cont">
-						<h1 className="text-xl">Shop</h1>
+						<h1 className="text-xl">Shops</h1>
 						<div className="card glass bg-indigo-700" key={myShop._id}>
 							<Link to={`/shopdetails/${myShop._id}`}>
 								<figure>

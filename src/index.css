@@ -10,8 +10,7 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	/* 	background-color: rgb(56, 1, 184);
- */
+	overflow-x: hidden;
 }
 
 /* Colors */
