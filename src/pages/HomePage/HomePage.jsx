@@ -79,9 +79,13 @@ function HomePage() {
 				</div>
 				<div className="divider-2"></div>
 				<div className="text">
-					<h2 className="text-2xl font-bold text-start">About us</h2>
+					<h2 className="text-2xl font-bold text-start">About</h2>
 					<p>
-					The idea for the project came through a joke with a really good friend (Gab) who loves coffee, so I thought why not create an application that my friend can find people like her who are passionate about coffee around the world and share places and experiences drinking delicious coffee.
+						The idea for the project came through a joke with a really good
+						friend (Gab) who loves coffee, so I thought why not create an
+						application that my friend can find people like her who are
+						passionate about coffee around the world and share places and
+						experiences drinking delicious coffee.
 					</p>
 				</div>
 				<div>
