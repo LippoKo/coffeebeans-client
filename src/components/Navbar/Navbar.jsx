@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
 
 function Navbar() {
-	const { loggedIn, user, logout } = useContext(AuthContext);
+	const { loggedIn, logout } = useContext(AuthContext);
 
 	return (
 		<>
