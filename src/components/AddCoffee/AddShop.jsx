@@ -74,7 +74,7 @@ function AddShop({ getShopList }) {
 	return (
 		<div className="cont">
 			<h3 className="text-2xl font-bold">Add Shop</h3>
-			<div className="SignupPage bg-indigo-700">
+			<div className="SignupPage card bg-indigo-700">
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="store">
 						Store:

@@ -83,7 +83,7 @@ function AddBeans() {
 	return (
 		<div className="cont">
 			<h3 className="text-2xl font-bold">Add Beans</h3>
-			<div className="SignupPage bg-emerald-700">
+			<div className="SignupPage card bg-emerald-700">
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="store">
 						Store:

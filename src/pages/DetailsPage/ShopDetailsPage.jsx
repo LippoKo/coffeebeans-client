@@ -58,6 +58,17 @@ function ShopDetails() {
 					<p className="text-lg">
 						<i>{shop.location}</i>
 					</p>
+					<p className="text-xs flex justify-start text-black">
+						<u>Created by: </u>{" "}
+					</p>
+					<p className="text-sm flex">
+						<img
+							className="card-profile"
+							src={shop.user.imageUrl}
+							alt="profile pic"
+						/>
+						<i>{shop.user.username}</i>
+					</p>
 				</div>
 			)}
 			{shop && user._id === shop.user._id && (

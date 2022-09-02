@@ -64,6 +64,17 @@ function BeansDetails() {
 					<p className="text-lg">
 						<i>{beans.location}</i>
 					</p>
+					<p className="text-xs flex justify-start text-black">
+						<u>Created by: </u>{" "}
+					</p>
+					<p className="text-sm flex">
+						<img
+							className="card-profile"
+							src={beans.user.imageUrl}
+							alt="profile pic"
+						/>
+						<i>{beans.user.username}</i>
+					</p>
 				</div>
 			)}
 			{beans && user._id === beans.user._id && (

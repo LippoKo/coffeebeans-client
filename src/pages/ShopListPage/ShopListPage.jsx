@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import AddShop from "../../components/AddCoffee/AddShop";
 import { Link } from "react-router-dom";
 
 //const API_URL = "http://localhost:5005";
@@ -59,6 +58,17 @@ function ShopListPage() {
 								</p>
 								<p className="text-sm">
 									<i>{list.description}</i>
+								</p>
+								<p className="text-xs flex justify-start text-black">
+									<u>Created by: </u>{" "}
+								</p>
+								<p className="text-sm flex">
+									<img
+										className="card-profile"
+										src={list.user.imageUrl}
+										alt="profile pic"
+									/>
+									<i>{list.user.username}</i>
 								</p>
 							</Link>
 						</div>
