@@ -38,12 +38,26 @@ function HomePage() {
     <div>
       <section id="home">
         <Popup trigger={popup} setTrigger={setPopup}>
-          <h2 className="text-xl font-bold">Hello Coffee Lover</h2>
-          <p>
-            If you are opening this site on Desktop, go to INSPECT by clicking
-            with the right mouse button and put the site in mobile version, this
-            application was developed exclusively for mobile version. Thanks!
-          </p>
+        <h4 className="text-xl font-bold">
+          This webpage is mobile version, <br />
+          for better visualization we recommend putting it in a mobile
+          dimension.
+        </h4>
+        <p>If you dont know how folow this steps:</p>
+        <p>
+          <strong>1</strong> Right click mouse on the page and select de last
+          option "Inspect"
+        </p>
+        <p>
+          <strong>2</strong> In the upper left corner of the new window click on
+          the icon with 2 rectangles symbolizing "tablet and cell phone"
+        </p>
+        <p>
+          <strong>3</strong> Then just scale the image on the right side button
+          or select a model in the option in the center of the screen with
+          "dimension"
+        </p>
+        <p class="thanks"><strong>Thanks!</strong></p>
         </Popup>
         <h2 className="text-2xl font-bold">Welcome!</h2>
         <p className="text-lg">Are you looking for caffee?</p>
